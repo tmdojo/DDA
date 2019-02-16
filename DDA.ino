@@ -12,7 +12,7 @@ void setup()
   TDSs.begin();
 
   for (p=0; p<12; p=p+1) {
-      TDSs.setPixelColor(p,0,0,200); // Moderately bright green color.
+      TDSs.setPixelColor(p,0,0,200);
   }
 
   // Wait for button press.
@@ -22,7 +22,7 @@ void setup()
   }
 
   for (p=0; p<12; p=p+1) {
-      TDSs.setPixelColor(p,0,0,0); // Moderately bright green color.
+      TDSs.setPixelColor(p,0,0,0);
       delay(100);      
   }
   
@@ -34,22 +34,13 @@ void setup()
   }
   sValue = sValue / 5;
 
-  // Beep to indicate ARMED.
-  TDSs.playTone(2000,100);
   delay(1000);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 void loop()
 {
-  // Check to see if alarm has been triggered.
-  if (triggered) {
-    // Sound the alarm.
-    TDSs.playTone(2000, 500);
-    delay(500);
-    TDSs.playTone(3000, 500);
-    delay(500);
-  }
+
     // Get current sensor value.
     dValue = TDSs.Tesla();
     
@@ -57,18 +48,15 @@ void loop()
     
     // Check sensor value to determine if alarm should be triggered.
     if (dValue > sValue + alarmThreshold) {
-      triggered = true;  // Trigger the alarm.
       // Turn on all the NeoPixels.
       for (p=0; p<12; p=p+1) {
-        TDSs.setPixelColor(p,0,0,150); // Moderately bright red color.
+        TDSs.setPixelColor(p,0,0,150);
       }
     }
     
     if (dValue < sValue + alarmThreshold) {
-      triggered = false;  // Trigger the alarm.
       for (p=0; p<12; p=p+1) {
         TDSs.setPixelColor(p,0,0,0);
       }
-    }
-    
+    }    
 }
