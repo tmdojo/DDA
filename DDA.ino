@@ -2,7 +2,7 @@
 
 float dValue;                 // dynamic sensor value
 float sValue;                 // static sensor value
-float alarmThreshold = 0.5;    // adjust to change alarm sensitivty
+float alarmThreshold = 20;    // adjust to change alarm sensitivty
 bool triggered = false;       // becomes true when diary removed
 int p;
 ///////////////////////////////////////////////////////////////////////////////
@@ -54,7 +54,7 @@ void setup()
   // Compute sensor value as average of 5 readings.
   sValue = 0;
   for (p=0; p<5; p=p+1) {
-    dValue = TDSs.AccelX();
+    dValue = TDSs.Tesla();
     sValue = sValue + dValue;
   }
   sValue = sValue / 5;
@@ -88,7 +88,7 @@ void loop()
 {
 
     // Get current sensor value.
-    dValue = TDSs.AccelX();
+    dValue = TDSs.Tesla();
     
     Serial.println(dValue);
     
