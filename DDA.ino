@@ -50,36 +50,8 @@ void setup()
       TDSs.setPixelColor(p,0,0,0);
       delay(100);      
   }
-
-  // Compute sensor value as average of 5 readings.
-  sValue = 0;
-  for (p=0; p<5; p=p+1) {
-    dValue = TDSs.Tesla();
-    sValue = sValue + dValue;
-  }
-  sValue = sValue / 5;
+  sValue = TDSs.Tesla()
   
-/*  sValue = 0; 
-
-  p=0;
-  dValue = TDSs.Tesla();
-  sValue = sValue + dValue;
-  p=1;
-  dValue = TDSs.Tesla();
-  sValue = sValue + dValue;
-  p=2;
-  dValue = TDSs.Tesla();
-  sValue = sValue + dValue;
-  p=3;
-  dValue = TDSs.Tesla();
-  sValue = sValue + dValue;
-  p=4;
-  dValue = TDSs.Tesla();
-  sValue = sValue + dValue;
-
-  sValue = sValue / 5;
-*/
-
   delay(1000);
 }
 
@@ -101,6 +73,7 @@ void loop()
     }
     
     if (dValue < sValue + alarmThreshold) {
+      // Turn off all the NeoPixels.
       for (p=0; p<12; p=p+1) {
         TDSs.setPixelColor(p,0,0,0);
       }
