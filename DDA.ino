@@ -2,7 +2,7 @@
 
 float dValue;                 // dynamic sensor value
 float sValue;                 // static sensor value
-float alarmThreshold = 20;    // adjust to change alarm sensitivty
+float alarmThreshold = 10;    // adjust to change alarm sensitivty
 bool triggered = false;       // becomes true when diary removed
 int p;
 ///////////////////////////////////////////////////////////////////////////////
