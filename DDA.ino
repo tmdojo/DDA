@@ -50,6 +50,7 @@ void setup()
       TDSs.setPixelColor(p,0,0,0);
       delay(100);      
   }
+  // Get reference sensor value.
   sValue = TDSs.Tesla()
   
   delay(1000);
