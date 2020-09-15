@@ -51,7 +51,7 @@ void setup()
       delay(100);      
   }
   // Get reference sensor value.
-  sValue = TDSs.Tesla()
+  sValue = TDSs.Tesla();
   
   delay(1000);
 }
